@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en">
+    {% load static %}
+
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<title>Registration form</title>
+	
+	<link href='https://use.fontawesome.com/releases/v5.8.1/css/all.css' rel='stylesheet'>
+	<style>
+		/* @import url('https://fonts.googleapis.com/css?family=Montserrat|Poppins&display=swap'); */
+		@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		/* body {
+			background-image: linear-gradient(white, purple);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			font-family: 'Montserrat', sans-serif;
+
+		} */
+
+		html {
+			font-size: 92.5%;
+			overflow-x: hidden;
+			scroll-padding-top: 9rem;
+			scroll-behavior: smooth;
+
+
+		}
+
+		html::-webkit-scrollbar {
+			width: .6rem;
+		}
+
+		html::-webkit-scrollbar-track {
+			background-image: linear-gradient(black, rgb(196, 94, 157));
+		}
+
+		html::-webkit-scrollbar-thumb {
+			background: rgb(249, 247, 250);
+			border-radius: 5rem;
+		}
+
+		nav{
+			top: 0px;
+		  border-radius: 1rem; 
+			position: fixed;
+		  
+			z-index: 1000;
+			display: flex;
+			height: 120px;
+			width: 100%;
+		  background-image: linear-gradient(rgb(11, 11, 12),rgb(141, 35, 141),white);
+			align-items: center;
+			justify-content: space-between;
+			padding: 0 50px 0 100px;
+			flex-wrap: wrap;
+		  }
+		  nav .logo{
+			color: #fff;
+			font-size: 35px;
+			font-weight: 800;
+		  }
+		  nav ul{
+			display: flex;
+			flex-wrap: wrap;
+			list-style: none;
+		  }
+		  nav ul li{
+			margin: 0 5px;
+		  }
+		  nav ul li a{
+			color: #f2f2f2;
+			text-decoration: none;
+			font-size: 18px;
+			font-weight: 700;
+			padding: 8px 15px;
+			border-radius: 5px;
+			letter-spacing: 1px;
+			transition: all 0.3s ease;
+		  }
+		  nav ul li a.active,
+		  nav ul li a:hover{
+			color: #111;
+			background: #fff;
+		  }
+		  nav .menu-btn i{
+			color: #fff;
+			font-size: 22px;
+			cursor: pointer;
+			display: none;
+		  }
+		  input[type="checkbox"]{
+			display: none;
+		  }
+		  @media (max-width: 1000px){
+			nav{
+			  padding: 0 40px 0 50px;
+			}
+		  }
+		  @media (max-width: 920px) {
+			nav .menu-btn i{
+			  display: block;
+			}
+			#click:checked ~ .menu-btn i:before{
+			  content: "\f00d";
+			}
+			nav ul{
+			  position: fixed;
+			  top: 120px;
+			  left: -100%;
+			  background-image: linear-gradient(purple,white);
+			  height: 100vh;
+			  width: 100%;
+			  text-align: center;
+			  display: block;
+			  transition: all 0.3s ease;
+			  border-radius: 1rem;
+			}
+			#click:checked ~ ul{
+			  left: 0;
+			}
+			nav ul li{
+			
+			  width: 100%;
+			  margin: 20px 0;
+			}
+			nav ul li a{
+			  width: 100%;
+			  margin-left: -100%;
+			  display: block;
+			  font-size: 20px;
+			  transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+			}
+			#click:checked ~ ul li a{
+			  margin-left: 0px;
+			}
+			nav ul li a.active
+			{
+		
+			  background: white;
+			  color: #000000;
+			}
+			nav ul li a:hover{
+			  background-color: #ffffff;
+			  color: #000000;
+			}
+		  }
+		  
+
+
+
+		.bg-img {
+	        top: 30rem;
+			background: url(/static/ds.jpg);
+            width: 100%;
+			height: 140vh;
+			background-size: cover;
+			background-position: center;
+		}
+
+		.bg-img::after {
+			position: absolute;
+			content: '';
+			top: 0;
+			left: 0;
+			height: 140%;
+			width: 100%;
+			background: rgba(0, 0, 0, 0.4);
+		}
+
+		.content {
+			
+			position: absolute;
+			top: 61%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+			z-index: 999;
+			width: 370px;
+			text-align: center;
+			padding: 60px 32px;
+			background: rgba(255, 255, 255, 0.04);
+			box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
+		}
+
+		.content header {
+			color: #fff;
+			font-size: 33px;
+			font-weight: 600;
+			margin: 0 0 35px 0;
+			font-family: 'Poppins', sans-serif;
+		}
+
+		.field {
+            margin-top: 12px;
+			position: relative;
+			height: 45px;
+			width: 100%;
+			display: flex;
+			background: rgba(255, 255, 255, 0.94);
+		}
+
+		.field span {
+			color: #222;
+			width: 40px;
+			line-height: 45px;
+			padding: 0 10px;
+		}
+
+		.field input {
+			height: 100%;
+			width: 100%;
+			background: transparent;
+			border: none;
+			outline: none;
+			color: #222;
+			font-size: 16px;
+			font-family: 'Poppins', sans-serif;
+		}
+
+
+
+		.space {
+			margin-top: 12px;
+		}
+
+	
+
+		input[type="submit"] {
+			background: linear-gradient(to right, #0000ff 0%, #6666ff 100%);
+			border: 1px solid linear-gradient(to right, #0000ff 0%, #6666ff 100%);
+			;
+			color: #fff;
+			font-size: 18px;
+			letter-spacing: 1px;
+			font-weight: 600;
+			cursor: pointer;
+			font-family: 'Montserrat', sans-serif;
+		}
+
+		input[type="submit"]:hover {
+			background: linear-gradient(to left, #0000ff 0%, #6666ff 100%);
+		}
+
+		.login {
+			color: #fff;
+			margin: 20px 0;
+			font-family: 'Poppins', sans-serif;
+		}
+
+		.link {
+			display: flex;
+			cursor: pointer;
+			color: #fff;
+			margin: 0 0 20px 0;
+		}
+
+		.facebook ,
+		.linkedin,.instagram{
+			width: 100%;
+			height: 45px;
+			line-height: 45px;
+			margin-top: 10px;
+			margin-left: 10px;
+	
+		}
+		.facebook a{
+			color: #f2f2f2;
+		}
+	
+		.linkedin a{
+			color: #f2f2f2;
+		}
+		.instagram a{
+			color: #f2f2f2;
+		}
+	.facebook {
+			margin-left: 0px;
+			background: #5022cc;
+			border: 1px solid #3e61a8;
+	
+		
+		}
+
+	
+		.instagram {
+			background: linear-gradient(to right,rgb(196, 108, 188),rgb(209, 27, 163) 100%);
+			border: 1px solid linear-gradient(to right, #f09bd6 0%, #e22e88 100%);
+		}
+
+		.linkedin {
+			background: linear-gradient(to right,rgb(37, 2, 102),rgb(241, 237, 240) 100%);
+			border: 1px solid linear-gradient(to right, #230d72 0%, #fdf5f9 100%);
+		}
+
+		.facebook:hover {
+			background: #3e61a8;
+		}
+
+
+		.instagram:hover {
+			background: rgb(153, 17, 101);
+		}
+		.linkedin:hover {
+			background: rgb(72, 10, 129);
+		}
+		.link i {
+			font-size: 17px;
+		}
+
+		.link span {
+			font-size: 15px;
+			margin-left: 8px;
+
+			font-weight: 600;
+			font-family: 'Poppins', sans-serif;
+		}
+
+		.signup {
+			color: #fff;
+			font-size: 15px;
+			font-family: 'Poppins', sans-serif;
+		}
+
+		.signup a {
+			color: #37ff00;
+			text-decoration: none;
+		}
+
+		.signup a:hover {
+			text-decoration: underline;
+		}
+
+		footer{
+
+background-image: url(/static/fj.jpg) ;
+background-size: cover;
+
+
+  position: relative;
+  width: 100%;
+  height: 380px;
+  /* background: #101010; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+footer p:nth-child(1){
+
+  font-size: 30px;
+  color: rgb(17, 17, 17);
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+footer p:nth-child(2){
+  color: rgb(69, 22, 158);
+  font-size: 17px;
+  width: 500px;
+  text-align: center;
+  line-height: 26px;
+
+}
+.social{
+  display: flex;
+}
+.social a{
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+background-image: linear-gradient(purple,black);
+  border-radius: 50%;
+  margin: 22px 10px;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+}
+.social a:hover{
+  transform: scale(1.3);
+  transition: .3s;
+}
+.end{
+  position: absolute;
+  color:#fffffd;
+  bottom: 35px;
+  font-size: 20px; 
+font-weight: bold;
+}
+
+@media (max-width: 950px) {
+
+	footer{
+	   background-image: url(/static/fj.jpg) ;
+	   background-size: cover;
+	   width: 100%;
+		 height: 300px;
+	 }
+   
+	 }
+
+	</style>
+	
+	<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+	
+
+</head>
+<body>
+
+<!-- <body oncontextmenu='return false' class='snippet-body'> -->
+
+	<nav>
+		<div class="logo">P@Verma</div>
+		<input type="checkbox" id="click">
+		<label for="click" class="menu-btn">
+			<i class="fas fa-bars"></i>
+		</label>
+		<ul>
+			<li><a  href="{% url 'home' %}">Home</a></li>
+			<li><a href="{% url 'home' %}">About Me</a></li>
+			<li><a href="{% url 'home' %}">Skills</a></li>
+			<li><a href="{% url 'home' %}">Work</a></li>
+			<li><a href="{% url 'home' %}">Contact</a></li>
+			<li><a class="active" href="{% url 'register' %}">Register</a></li>
+			<li><a href="{% url 'login' %}">Login</a></li>
+		</ul>
+	</nav>
+	<div class="bg-img">
+		<div class="content">
+			<header>Registration Form</header>
+			<form action="register" method="post">
+				{% csrf_token %}
+             
+				<div class="field">
+					<span class="fa fa-user"></span>
+					<input type="text" required placeholder="User Name " name="username">
+				</div>
+				<div class="field space">
+					<span class="fa fa-lock"></span>
+					<input type="password" class="password" required placeholder="Password" name="pwd">
+
+				</div>
+			
+				<div class="field">
+					<input type="submit" value="Register">
+				</div>
+				<div class="login">Or Register with</div>
+				<div class="link">
+					<div class="facebook" >
+						<a href="https://www.facebook.com/profile.php?id=100005034405623" class="fab fa-facebook" ><span>Facebook</span></a>
+					</div>
+				
+					<div class="instagram">
+						<a href="https://www.instagram.com/vermapriyanka884" class="fab fa-instagram"><span>Instagram</span></a>
+					</div>
+					<div class="linkedin">
+						<a href="https://www.instagram.com/vermapriyanka884" class="fab fa-linkedin"><span>Linkedin</span></a>
+					</div>
+				</div>
+				<div class="signup">Already a member?
+					<a href="/login">Login Now</a>
+				</div>
+			</form>
+			{% if messages %}
+			{% for i in messages %}
+			{{i}}
+			{% endfor %}
+			{% endif %}
+		</div>
+	</div>
+
+	
+	<footer>
+		<p> By Priyanka Verma</p>
+	  
+		<div class="social">
+		  <a href="https://www.facebook.com/profile.php?id=100005034405623"><i class="fab fa-facebook"></i></a>
+		  <a href=""><i class="fab fa-linkedin"></i></a>
+		  <a href="https://www.instagram.com/vermapriyanka884"><i class="fab fa-instagram"></i></a>
+		  <a href="https://github.com/pv-27"><i class="fab fa-github"></i></i></a>
+		</div>
+		<p class="end">CopyRight@2022</p>
+	  </footer>
+	  
+	<script type='text/javascript'></script>
+</body>
+
+</html>
+
+
+
+
+
+

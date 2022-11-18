@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+    {% load static %}
+
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<title>Education</title>
+	
+	<link href='https://use.fontawesome.com/releases/v5.8.1/css/all.css' rel='stylesheet'>
+	<style>
+		/* @import url('https://fonts.googleapis.com/css?family=Montserrat|Poppins&display=swap'); */
+		@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+
+	
+		
+background-image: url(/static/fe.jpg);
+		background-size: cover;
+
+		}
+
+		html {
+			font-size: 92.5%;
+			overflow-x: hidden;
+			scroll-padding-top: 9rem;
+			scroll-behavior: smooth;
+
+
+		}
+
+		html::-webkit-scrollbar {
+			width: .6rem;
+		}
+
+		html::-webkit-scrollbar-track {
+			background-image: linear-gradient(black, rgb(196, 94, 157));
+		}
+
+		html::-webkit-scrollbar-thumb {
+			background: rgb(249, 247, 250);
+			border-radius: 5rem;
+		}
+
+		nav{
+			top: 0px;
+		  border-radius: 1rem; 
+			position: fixed;
+		  
+			z-index: 1000;
+			display: flex;
+			height: 120px;
+			width: 100%;
+		  background-image: linear-gradient(rgb(11, 11, 12),rgb(141, 35, 141),white);
+			align-items: center;
+			justify-content: space-between;
+			padding: 0 50px 0 100px;
+			flex-wrap: wrap;
+		  }
+		  nav .logo{
+			color: #fff;
+			font-size: 35px;
+			font-weight: 800;
+		  }
+		  nav ul{
+			display: flex;
+			flex-wrap: wrap;
+			list-style: none;
+		  }
+		  nav ul li{
+			margin: 0 5px;
+		  }
+		  nav ul li a{
+			color: #f2f2f2;
+			text-decoration: none;
+			font-size: 18px;
+			font-weight: 700;
+			padding: 8px 15px;
+			border-radius: 5px;
+			letter-spacing: 1px;
+			transition: all 0.3s ease;
+		  }
+		  nav ul li a.active,
+		  nav ul li a:hover{
+			color: #111;
+			background: #fff;
+		  }
+		  nav .menu-btn i{
+			color: #fff;
+			font-size: 22px;
+			cursor: pointer;
+			display: none;
+		  }
+		  input[type="checkbox"]{
+			display: none;
+		  }
+		  @media (max-width: 1000px){
+			nav{
+			  padding: 0 40px 0 50px;
+			}
+		  }
+		  @media (max-width: 920px) {
+			nav .menu-btn i{
+			  display: block;
+			}
+			#click:checked ~ .menu-btn i:before{
+			  content: "\f00d";
+			}
+			nav ul{
+			  position: fixed;
+			  top: 120px;
+			  left: -100%;
+			  background-image: linear-gradient(purple,white);
+			  height: 100vh;
+			  width: 100%;
+			  text-align: center;
+			  display: block;
+			  transition: all 0.3s ease;
+			  border-radius: 1rem;
+			}
+			#click:checked ~ ul{
+			  left: 0;
+			}
+			nav ul li{
+			
+			  width: 100%;
+			  margin: 20px 0;
+			}
+			nav ul li a{
+			  width: 100%;
+			  margin-left: -100%;
+			  display: block;
+			  font-size: 20px;
+			  transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+			}
+			#click:checked ~ ul li a{
+			  margin-left: 0px;
+			}
+			nav ul li a.active
+			{
+		
+			  background: white;
+			  color: #000000;
+			}
+			nav ul li a:hover{
+			  background-color: #ffffff;
+			  color: #000000;
+			}
+		  }
+		  
+
+
+
+
+
+
+
+/* Timeline Container */
+
+.tm{
+    margin-top: 10rem;
+    margin-left: 35%;
+}
+.tm h1{
+    font-weight: bold;
+    font-size: 2rem;
+    color:white;
+    background-color:purple;
+  text-align: center;
+    padding: 5px ;
+    width: 9.4rem;
+}
+
+/* Card container */
+.card {
+    
+  position: relative;
+  max-width: 400px;
+
+}
+
+/* setting padding based on even or odd */
+.card:nth-child(odd) {
+  padding: 30px 0 30px 30px;
+}
+.card:nth-child(even) {
+  padding: 30px 30px 30px 0;
+}
+/* Global ::before */
+.card::before {
+  content: "";
+  position: absolute;
+  width: 50%;
+  border: solid rgb(138, 16, 101);
+}
+
+/* Setting the border of top, bottom, left */
+.card:nth-child(odd)::before {
+  left: 0px;
+  top: -4.5px;
+  bottom: -4.5px;
+  border-width: 5px 0 5px 5px;
+  border-radius: 50px 0 0 50px;
+}
+
+/* Setting the border of top, bottom, right */
+.card:nth-child(even)::before {
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-width: 5px 5px 5px 0;
+  border-radius: 0 50px 50px 0;
+}
+
+/* Removing the border if it is the first card */
+.card:first-child::before {
+  border-top: 0;
+  border-top-left-radius: 0;
+}
+
+/* Removing the border if it is the last card  and it's odd */
+.card:last-child:nth-child(odd)::before {
+  border-bottom: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* Removing the border if it is the last card  and it's even */
+.card:last-child:nth-child(even)::before {
+  border-bottom: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* Information about the timeline */
+.info {
+  display: flex;
+  flex-direction: column;
+ background-image: linear-gradient(purple,white);
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+  padding: 10px;
+ 
+}
+
+/* Title of the card */
+.title {
+  color: rgb(0, 0, 0);
+  position: relative;
+}
+
+/* Timeline dot  */
+.title::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 999px;
+  border: 3px solid rgb(160, 26, 104);
+}
+
+/* text right if the card is even  */
+.card:nth-child(even) > .info > .title {
+  text-align: right;
+}
+
+/* setting dot to the left if the card is odd */
+.card:nth-child(odd) > .info > .title::before {
+  left: -45px;
+}
+
+/* setting dot to the right if the card is odd */
+.card:nth-child(even) > .info > .title::before {
+  right: -45px;
+}
+
+.vi{
+ 
+    margin-left: 15%;
+    display: inline-block;
+}
+.vi h1{
+    text-align: center;
+    padding-top: 5rem;
+    color: yellow;
+    font-size: 3rem;
+    font-weight: bold;
+}
+footer{
+
+background-image: url(/static/fj.jpg) ;
+background-size: cover;
+
+
+  position: relative;
+  width: 100%;
+  height: 380px;
+  /* background: #101010; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+footer p:nth-child(1){
+
+  font-size: 30px;
+  color: rgb(17, 17, 17);
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+footer p:nth-child(2){
+  color: rgb(69, 22, 158);
+  font-size: 17px;
+  width: 500px;
+  text-align: center;
+  line-height: 26px;
+
+}
+.social{
+  display: flex;
+}
+.social a{
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+background-image: linear-gradient(purple,black);
+  border-radius: 50%;
+  margin: 22px 10px;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+}
+.social a:hover{
+  transform: scale(1.3);
+  transition: .3s;
+}
+.end{
+  position: absolute;
+  color:#fffffd;
+  bottom: 35px;
+  font-size: 20px; 
+font-weight: bold;
+}
+
+@media (max-width: 950px) {
+
+	footer{
+	   background-image: url(/static/fj.jpg) ;
+	   background-size: cover;
+	   width: 100%;
+		 height: 300px;
+	 }
+   
+	 }
+
+	</style>
+	
+	<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+	
+
+</head>
+<body>
+
+
+
+	<nav>
+		<div class="logo">P@Verma</div>
+		<input type="checkbox" id="click">
+		<label for="click" class="menu-btn">
+			<i class="fas fa-bars"></i>
+		</label>
+		<ul>
+			<li><a  href="{% url 'home' %}">Home</a></li>
+			<li><a href="{% url 'home' %}">About Me</a></li>
+			<li><a href="{% url 'home' %}">Skills</a></li>
+			<li><a href="{% url 'home' %}">Work</a></li>
+			<li><a href="{% url 'home' %}">Contact</a></li>
+			<li><a href="{% url 'register' %}">Register</a></li>
+			<li><a  href="{% url 'login' %}">Login</a></li>
+			<li><a  href="{% url 'logout' %}">Logout</a></li>
+		</ul>
+	</nav>
+
+	{% if user.is_authenticated %}
+
+
+<section class="tm">
+    <h1>Education</h1>
+    <div class="timeline">
+        <div class="outer">
+          <div class="card">
+            <div class="info">
+              <h3 class="title">(2011-2012)</h3>
+              <h3 class="title">SECONDARY EDUCATION(10th)</h3>
+              <p>Completed secondary education from Queen's Mary's.Hr.Sec school bhopal with 80.4% . </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="info">
+              <h3 class="title">(2013-2014)</h3>
+              <h3 class="title">HIGHER EDUCATION(12th)</h3>
+              <p>Completed higher education from Queen's Mary's.Hr.Sec school bhopal in the stream of PCM with 67.3% .</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="info">
+              <h3 class="title">(2014-2018)</h3>
+              <h3 class="title">BACHELORS </h3>
+              <p>Completed bachelors degree from Lakshmi narain College Of Technology bhopal in the stream of Computer Science with 78.8% . </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="info">
+                <h3 class="title">(2018-2020)</h3>
+                <h3 class="title">MASTERS</h3>
+              <p>Completed masters degree from Lakshmi narain College Of Technology & Science bhopal in the stream of Computer Science with 84.3% . </p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+  <section class="vi">  
+<h1>My School</h1>
+
+<video width="900" height="600" poster="{% static 'q.jpg' %}" controls>
+   <source src="{% static 'queen.mp4' %}" type="video/mp4">
+  
+   Your browser does not support the video tag.
+</video>
+<h1>My college</h1>
+
+<video width="900" height="600" poster="{% static 'ln.jpg' %}" controls>
+   <source src="{% static 'lnct.mp4' %}" type="video/mp4">
+  
+   Your browser does not support the video tag.
+</video>
+</section>
+{% endif %}
+
+
+<footer>
+	<p> By Priyanka Verma</p>
+  
+	<div class="social">
+	  <a href="https://www.facebook.com/profile.php?id=100005034405623"><i class="fab fa-facebook"></i></a>
+	  <a href=""><i class="fab fa-linkedin"></i></a>
+	  <a href="https://www.instagram.com/accounts/login"><i class="fab fa-instagram"></i></a>
+	  <a href="https://github.com/pv-27"><i class="fab fa-github"></i></i></a>
+	</div>
+	<p class="end">CopyRight@2022</p>
+  </footer>
+  
+	
+</body>
+
+</html>
+
+
+
+
+
+
